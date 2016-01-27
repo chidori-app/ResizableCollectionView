@@ -40,8 +40,8 @@
 		D8212C1B1C59081B00EB515A = {
 			isa = PBXGroup;
 			children = (
-				D8212C261C59081B00EB515A /* ResizableCollectionView */,
 				D8212C251C59081B00EB515A /* Products */,
+				D8212C261C59081B00EB515A /* ResizableCollectionView */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +56,23 @@
 		D8212C261C59081B00EB515A /* ResizableCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				D8BBD9341C598B110095F2A1 /* library */,
 				D8212C271C59081B00EB515A /* AppDelegate.swift */,
-				D8212C291C59081B00EB515A /* ViewController.swift */,
-				D8212C2B1C59081B00EB515A /* Main.storyboard */,
 				D8212C2E1C59081B00EB515A /* Assets.xcassets */,
-				D8212C301C59081B00EB515A /* LaunchScreen.storyboard */,
 				D8212C331C59081B00EB515A /* Info.plist */,
-				D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */,
+				D8212C301C59081B00EB515A /* LaunchScreen.storyboard */,
+				D8212C2B1C59081B00EB515A /* Main.storyboard */,
+				D8212C291C59081B00EB515A /* ViewController.swift */,
 			);
 			path = ResizableCollectionView;
+			sourceTree = "<group>";
+		};
+		D8BBD9341C598B110095F2A1 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */,
+			);
+			path = library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +161,7 @@
 				D8212C2C1C59081B00EB515A /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		D8212C301C59081B00EB515A /* LaunchScreen.storyboard */ = {
@@ -161,6 +170,7 @@
 				D8212C311C59081B00EB515A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -288,6 +298,7 @@
 				D8212C381C59081B00EB515A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
