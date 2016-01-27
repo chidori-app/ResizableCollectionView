@@ -12,6 +12,7 @@
 		D8212C2D1C59081B00EB515A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8212C2B1C59081B00EB515A /* Main.storyboard */; };
 		D8212C2F1C59081B00EB515A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8212C2E1C59081B00EB515A /* Assets.xcassets */; };
 		D8212C321C59081B00EB515A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8212C301C59081B00EB515A /* LaunchScreen.storyboard */; };
+		D8212C3A1C5909AA00EB515A /* ResizableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D8212C2E1C59081B00EB515A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8212C311C59081B00EB515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8212C331C59081B00EB515A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				D8212C2E1C59081B00EB515A /* Assets.xcassets */,
 				D8212C301C59081B00EB515A /* LaunchScreen.storyboard */,
 				D8212C331C59081B00EB515A /* Info.plist */,
+				D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */,
 			);
 			path = ResizableCollectionView;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8212C2A1C59081B00EB515A /* ViewController.swift in Sources */,
+				D8212C3A1C5909AA00EB515A /* ResizableCollectionView.swift in Sources */,
 				D8212C281C59081B00EB515A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
