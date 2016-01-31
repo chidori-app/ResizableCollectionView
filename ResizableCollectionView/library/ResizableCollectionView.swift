@@ -15,7 +15,7 @@ private struct DefaultNumberOfCells {
 private let defaultMarginOfCells = CGFloat(2)
 private let defaultThresholdOfZoom = CGFloat(0.5)
 
-// MARK: ResizableCollectionViewDelegate
+// MARK: - ResizableCollectionViewDelegate
 public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
     
     func willPinchIn(collectionView: ResizableCollectionView)
@@ -26,7 +26,7 @@ public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
     
 }
 
-// MARK: ResizableCollectionViewDelegate - default implementation
+// MARK: - ResizableCollectionViewDelegate - default implementation
 extension ResizableCollectionViewDelegate {
     
     func willPinchIn(collectionView: ResizableCollectionView) {
@@ -45,7 +45,7 @@ extension ResizableCollectionViewDelegate {
     
 }
 
-// MARK: ResizableCollectionViewDataSource
+// MARK: - ResizableCollectionViewDataSource
 public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
     
     func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
@@ -56,7 +56,7 @@ public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
     func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat
 }
 
-// MARK: ResizableCollectionViewDataSource - default implementation
+// MARK: - ResizableCollectionViewDataSource - default implementation
 extension ResizableCollectionViewDataSource {
     func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
         return DefaultNumberOfCells.min
@@ -76,7 +76,7 @@ extension ResizableCollectionViewDataSource {
     
 }
 
-// MARK: ResizableCollectionView
+// MARK: - ResizableCollectionView
 public class ResizableCollectionView: UICollectionView {
     
     /// ResizableCollectionViewDelegate
@@ -111,10 +111,17 @@ public class ResizableCollectionView: UICollectionView {
     
     override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
+        self._init()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        self._init()
+    }
+    
+    private func _init() {
+        self.collectionViewLayout = self.collectionViewFlowLayout(self.numberOfCells)
+        self.enableGesture()
     }
     
     func pinch(gesture: UIPinchGestureRecognizer) {
@@ -172,6 +179,9 @@ public class ResizableCollectionView: UICollectionView {
         let margin = (self.myDataSource == nil) ? defaultMarginOfCells : self.myDataSource!.marginOfCells(self)
         let cellWidth = (UIScreen.mainScreen().bounds.size.width - margin * (CGFloat(numberOfCells) + 1)) / CGFloat(numberOfCells)
         layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
+        layout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin)
+        layout.minimumInteritemSpacing = margin
+        layout.minimumLineSpacing = margin
         return layout
     }
     
