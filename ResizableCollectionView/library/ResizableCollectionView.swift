@@ -8,6 +8,14 @@
 
 import UIKit
 
+private struct DefaultNumberOfCells {
+    static let min = 1
+    static let max = 5
+}
+private let defaultMarginOfCells = CGFloat(2)
+private let defaultThresholdOfZoom = CGFloat(0.5)
+
+// MARK: ResizableCollectionViewDelegate
 public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
     
     func willPinchIn(collectionView: ResizableCollectionView)
@@ -18,17 +26,57 @@ public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
     
 }
 
+// MARK: ResizableCollectionViewDelegate - default implementation
+extension ResizableCollectionViewDelegate {
+    
+    func willPinchIn(collectionView: ResizableCollectionView) {
+        // nothing
+    }
+    func willPinchOut(collectionView: ResizableCollectionView) {
+        // nothing
+    }
+    
+    func didPinchIn(collectionView: ResizableCollectionView) {
+        // nothing
+    }
+    func didPinchOut(collectionView: ResizableCollectionView) {
+        // nothing
+    }
+    
+}
+
+// MARK: ResizableCollectionViewDataSource
 public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
     
     func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
-    
     func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
     
     func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat
     
-    func threasholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat
+    func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat
 }
 
+// MARK: ResizableCollectionViewDataSource - default implementation
+extension ResizableCollectionViewDataSource {
+    func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
+        return DefaultNumberOfCells.min
+    }
+    
+    func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
+        return DefaultNumberOfCells.max
+    }
+    
+    func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat {
+        return defaultMarginOfCells
+    }
+    
+    func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat {
+        return defaultThresholdOfZoom
+    }
+    
+}
+
+// MARK: ResizableCollectionView
 public class ResizableCollectionView: UICollectionView {
     
     /// ResizableCollectionViewDelegate
@@ -72,8 +120,8 @@ public class ResizableCollectionView: UICollectionView {
     func pinch(gesture: UIPinchGestureRecognizer) {
         switch (gesture.state) {
         case .Began:
-            let min = (self.myDataSource == nil) ? 1 : self.myDataSource!.minNumberOfCellsInLine(self)
-            let max = (self.myDataSource == nil) ? 5 : self.myDataSource!.maxNumberOfCellsInLine(self)
+            let min = (self.myDataSource == nil) ? DefaultNumberOfCells.min : self.myDataSource!.minNumberOfCellsInLine(self)
+            let max = (self.myDataSource == nil) ? DefaultNumberOfCells.max : self.myDataSource!.maxNumberOfCellsInLine(self)
             
             if gesture.scale > 1.0 && self.numberOfCells > min {
                 self.zoomingStatus = .zoomIn
@@ -102,8 +150,8 @@ public class ResizableCollectionView: UICollectionView {
                 return
             }
             
-            let threashold = (self.myDataSource == nil) ? CGFloat(0.5) : self.myDataSource!.threasholdOfZoom(self)
-            if (self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress > threashold {
+            let threshold = (self.myDataSource == nil) ? defaultThresholdOfZoom : self.myDataSource!.thresholdOfZoom(self)
+            if (self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress > threshold {
                 self.finishInteractiveTransition()
                 self.numberOfCells = self.nextNumberOfCells()
             } else {
@@ -121,7 +169,7 @@ public class ResizableCollectionView: UICollectionView {
     
     private func collectionViewFlowLayout(numberOfCells: Int) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let margin = (self.myDataSource == nil) ? CGFloat(2) : self.myDataSource!.marginOfCells(self)
+        let margin = (self.myDataSource == nil) ? defaultMarginOfCells : self.myDataSource!.marginOfCells(self)
         let cellWidth = (UIScreen.mainScreen().bounds.size.width - margin * (CGFloat(numberOfCells) + 1)) / CGFloat(numberOfCells)
         layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
         return layout
