@@ -132,8 +132,10 @@ public class ResizableCollectionView: UICollectionView {
             
             if gesture.scale > 1.0 && self.numberOfCells > min {
                 self.zoomingStatus = .zoomIn
+                self.myDelegate?.willPinchOut(self)
             } else if self.numberOfCells < max {
                 self.zoomingStatus = .zoomOut
+                self.myDelegate?.willPinchIn(self)
             }
             if self.zoomingStatus == .noZoom {
                 return
@@ -143,6 +145,19 @@ public class ResizableCollectionView: UICollectionView {
             let nextLayout = self.collectionViewFlowLayout(nextCount)
             self.startInteractiveTransitionToCollectionViewLayout(nextLayout, completion: {Void in
                 self.enableGesture()
+                
+                switch (self.zoomingStatus) {
+                case .zoomIn:
+                    self.myDelegate?.didPinchOut(self)
+                    break
+                case .zoomOut:
+                    self.myDelegate?.didPinchOut(self)
+                    break
+                default:
+                    // nothing
+                    break
+                }
+                
                 self.zoomingStatus = .noZoom
             })
             break
