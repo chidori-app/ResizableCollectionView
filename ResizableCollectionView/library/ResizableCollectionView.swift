@@ -93,6 +93,10 @@ public class ResizableCollectionView: UICollectionView {
         didSet {
             assert(delegate == nil || delegate is ResizableCollectionViewDataSource, "The dataSource must be of type 'ResizableCollectionViewDataSource'")
             self.myDataSource = dataSource as? ResizableCollectionViewDataSource
+            
+            // update display
+            self.numberOfCells = self.myDataSource!.minNumberOfCellsInLine(self)
+            self.collectionViewLayout = self.collectionViewFlowLayout(self.numberOfCells)
         }
     }
     private weak var myDataSource: ResizableCollectionViewDataSource?
@@ -100,7 +104,7 @@ public class ResizableCollectionView: UICollectionView {
     
     private var pinchGesture: UIPinchGestureRecognizer! = nil
     
-    private var numberOfCells = 1
+    private var numberOfCells = DefaultNumberOfCells.min
     private var zoomingStatus: ZoomStatus = .noZoom
     
     enum ZoomStatus {
