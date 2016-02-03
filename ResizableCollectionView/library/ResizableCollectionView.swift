@@ -219,7 +219,7 @@ public class ResizableCollectionView: UICollectionView {
         var scale: CGFloat = 0.0
         switch (self.zoomingStatus) {
         case .zoomIn:
-            scale = zoomScale - 1.0
+            scale = zoomScale / 4.0 - 0.25
         case .zoomOut:
             scale = 2.0 - 2.0 * zoomScale
         default:
