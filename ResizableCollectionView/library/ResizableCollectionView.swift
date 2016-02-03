@@ -155,7 +155,7 @@ public class ResizableCollectionView: UICollectionView {
                     self.myDelegate?.didPinchOut(self)
                     break
                 case .zoomOut:
-                    self.myDelegate?.didPinchOut(self)
+                    self.myDelegate?.didPinchIn(self)
                     break
                 default:
                     // nothing
