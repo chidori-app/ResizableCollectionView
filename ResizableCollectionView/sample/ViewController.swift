@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private static let colors = [UIColor.redColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor(), UIColor.orangeColor()]
+    private static let colors = [UIColor.redColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor(), UIColor.whiteColor()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
