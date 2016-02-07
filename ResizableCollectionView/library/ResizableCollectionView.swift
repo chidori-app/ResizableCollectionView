@@ -27,7 +27,7 @@ public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
 }
 
 // MARK: - ResizableCollectionViewDelegate - default implementation
-extension ResizableCollectionViewDelegate {
+public extension ResizableCollectionViewDelegate {
     
     func willPinchIn(collectionView: ResizableCollectionView) {
         // nothing
@@ -57,7 +57,7 @@ public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
 }
 
 // MARK: - ResizableCollectionViewDataSource - default implementation
-extension ResizableCollectionViewDataSource {
+public extension ResizableCollectionViewDataSource {
     func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
         return DefaultNumberOfCells.min
     }
