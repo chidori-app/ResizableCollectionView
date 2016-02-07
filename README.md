@@ -14,7 +14,7 @@ ResizableCollectionView is a library to change the number of columns by pinch in
 ### Manual Installation
 
 1. Download source code.
-* Add ResizableCollectionView.swift to your project.
+2. Add ResizableCollectionView.swift to your project.
 
 
 ## Requirements
@@ -30,11 +30,11 @@ iOS 8.0 or higher.
 
   ![Screen Shot](imgs/storyboard1.png)
 
-* Set the class of the element to ResizableCollectionView instead of CollectionView.
+2. Set the class of the element to ResizableCollectionView instead of CollectionView.
 
   ![Screen Shot](imgs/storyboard2.png)
 
-* Implement ResizableCollectionViewDataSource.
+3. Implement ResizableCollectionViewDataSource.
   (ResizableCollectionViewDataSource extends UICollectionViewDataSource of which implementation is required.)
 
   ```swift
