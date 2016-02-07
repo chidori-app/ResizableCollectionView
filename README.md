@@ -9,7 +9,7 @@ ResizableCollectionView is a library to change the number of columns by pinch in
 
 ### Installation with CocoaPods
 
-Comming soon...
+`pod 'ResizableCollectionView'`
 
 ### Manual Installation
 
@@ -19,7 +19,7 @@ Comming soon...
 
 ## Requirements
 
-iOS 7.0 or higher.
+iOS 8.0 or higher.
 
 
 ## Usage
@@ -77,10 +77,10 @@ iOS 7.0 or higher.
 
 ResizableCollectionView has four delegate methods.
 
-* func willPinchIn(collectionView: ResizableCollectionView)
-* func willPinchOut(collectionView: ResizableCollectionView)
-* func didPinchIn(collectionView: ResizableCollectionView)
-* func didPinchOut(collectionView: ResizableCollectionView)
+* `func willPinchIn(collectionView: ResizableCollectionView)`
+* `func willPinchOut(collectionView: ResizableCollectionView)`
+* `func didPinchIn(collectionView: ResizableCollectionView)`
+* `func didPinchOut(collectionView: ResizableCollectionView)`
 
 
 ## Example
