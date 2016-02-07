@@ -65,9 +65,7 @@ iOS 8.0 or higher.
           return 100
       }
       func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-          let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-          cell.backgroundColor = ViewController.colors[indexPath.row % ViewController.colors.count]
-          return cell
+          return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
       }
 
   }
