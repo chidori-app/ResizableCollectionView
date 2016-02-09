@@ -7,27 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D8212C281C59081B00EB515A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8212C271C59081B00EB515A /* AppDelegate.swift */; };
-		D8212C2A1C59081B00EB515A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8212C291C59081B00EB515A /* ViewController.swift */; };
-		D8212C2D1C59081B00EB515A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8212C2B1C59081B00EB515A /* Main.storyboard */; };
-		D8212C2F1C59081B00EB515A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8212C2E1C59081B00EB515A /* Assets.xcassets */; };
-		D8212C321C59081B00EB515A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8212C301C59081B00EB515A /* LaunchScreen.storyboard */; };
-		D8212C3A1C5909AA00EB515A /* ResizableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */; };
+		D8ED900C1C6A40D40091EE9B /* ResizableCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = D8ED900B1C6A40D40091EE9B /* ResizableCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8ED90121C6A41BA0091EE9B /* ResizableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ED90111C6A41BA0091EE9B /* ResizableCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D8212C241C59081B00EB515A /* ResizableCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResizableCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8212C271C59081B00EB515A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8212C291C59081B00EB515A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D8212C2C1C59081B00EB515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D8212C2E1C59081B00EB515A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D8212C311C59081B00EB515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D8212C331C59081B00EB515A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableCollectionView.swift; sourceTree = "<group>"; };
+		D8ED90091C6A40D40091EE9B /* ResizableCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ResizableCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8ED900B1C6A40D40091EE9B /* ResizableCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResizableCollectionView.h; sourceTree = "<group>"; };
+		D8ED900D1C6A40D40091EE9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8ED90111C6A41BA0091EE9B /* ResizableCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D8212C211C59081B00EB515A /* Frameworks */ = {
+		D8ED90051C6A40D40091EE9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,59 +32,43 @@
 		D8212C1B1C59081B00EB515A = {
 			isa = PBXGroup;
 			children = (
-				D8212C251C59081B00EB515A /* Products */,
-				D8212C261C59081B00EB515A /* ResizableCollectionView */,
+				D8ED90091C6A40D40091EE9B /* ResizableCollectionView.framework */,
+				D8ED900A1C6A40D40091EE9B /* ResizableCollectionView */,
 			);
 			sourceTree = "<group>";
 		};
-		D8212C251C59081B00EB515A /* Products */ = {
+		D8ED900A1C6A40D40091EE9B /* ResizableCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				D8212C241C59081B00EB515A /* ResizableCollectionView.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D8212C261C59081B00EB515A /* ResizableCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				D8BBD9341C598B110095F2A1 /* library */,
-				D8C249F61C5BB84E002EB29A /* sample */,
+				D8ED90111C6A41BA0091EE9B /* ResizableCollectionView.swift */,
+				D8ED900B1C6A40D40091EE9B /* ResizableCollectionView.h */,
+				D8ED900D1C6A40D40091EE9B /* Info.plist */,
 			);
 			path = ResizableCollectionView;
 			sourceTree = "<group>";
 		};
-		D8BBD9341C598B110095F2A1 /* library */ = {
-			isa = PBXGroup;
-			children = (
-				D8212C391C5909AA00EB515A /* ResizableCollectionView.swift */,
-			);
-			path = library;
-			sourceTree = "<group>";
-		};
-		D8C249F61C5BB84E002EB29A /* sample */ = {
-			isa = PBXGroup;
-			children = (
-				D8212C271C59081B00EB515A /* AppDelegate.swift */,
-				D8212C2E1C59081B00EB515A /* Assets.xcassets */,
-				D8212C331C59081B00EB515A /* Info.plist */,
-				D8212C301C59081B00EB515A /* LaunchScreen.storyboard */,
-				D8212C2B1C59081B00EB515A /* Main.storyboard */,
-				D8212C291C59081B00EB515A /* ViewController.swift */,
-			);
-			path = sample;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		D8ED90061C6A40D40091EE9B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8ED900C1C6A40D40091EE9B /* ResizableCollectionView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		D8212C231C59081B00EB515A /* ResizableCollectionView */ = {
+		D8ED90081C6A40D40091EE9B /* ResizableCollectionView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8212C361C59081B00EB515A /* Build configuration list for PBXNativeTarget "ResizableCollectionView" */;
+			buildConfigurationList = D8ED900E1C6A40D40091EE9B /* Build configuration list for PBXNativeTarget "ResizableCollectionView" */;
 			buildPhases = (
-				D8212C201C59081B00EB515A /* Sources */,
-				D8212C211C59081B00EB515A /* Frameworks */,
-				D8212C221C59081B00EB515A /* Resources */,
+				D8ED90041C6A40D40091EE9B /* Sources */,
+				D8ED90051C6A40D40091EE9B /* Frameworks */,
+				D8ED90061C6A40D40091EE9B /* Headers */,
+				D8ED90071C6A40D40091EE9B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -100,8 +76,8 @@
 			);
 			name = ResizableCollectionView;
 			productName = ResizableCollectionView;
-			productReference = D8212C241C59081B00EB515A /* ResizableCollectionView.app */;
-			productType = "com.apple.product-type.application";
+			productReference = D8ED90091C6A40D40091EE9B /* ResizableCollectionView.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -113,7 +89,7 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = nscallop;
 				TargetAttributes = {
-					D8212C231C59081B00EB515A = {
+					D8ED90081C6A40D40091EE9B = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -127,61 +103,35 @@
 				Base,
 			);
 			mainGroup = D8212C1B1C59081B00EB515A;
-			productRefGroup = D8212C251C59081B00EB515A /* Products */;
+			productRefGroup = D8212C1B1C59081B00EB515A;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8212C231C59081B00EB515A /* ResizableCollectionView */,
+				D8ED90081C6A40D40091EE9B /* ResizableCollectionView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D8212C221C59081B00EB515A /* Resources */ = {
+		D8ED90071C6A40D40091EE9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8212C321C59081B00EB515A /* LaunchScreen.storyboard in Resources */,
-				D8212C2F1C59081B00EB515A /* Assets.xcassets in Resources */,
-				D8212C2D1C59081B00EB515A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D8212C201C59081B00EB515A /* Sources */ = {
+		D8ED90041C6A40D40091EE9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8212C2A1C59081B00EB515A /* ViewController.swift in Sources */,
-				D8212C3A1C5909AA00EB515A /* ResizableCollectionView.swift in Sources */,
-				D8212C281C59081B00EB515A /* AppDelegate.swift in Sources */,
+				D8ED90121C6A41BA0091EE9B /* ResizableCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D8212C2B1C59081B00EB515A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8212C2C1C59081B00EB515A /* Base */,
-			);
-			name = Main.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-		D8212C301C59081B00EB515A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8212C311C59081B00EB515A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D8212C341C59081B00EB515A /* Debug */ = {
@@ -265,25 +215,46 @@
 			};
 			name = Release;
 		};
-		D8212C371C59081B00EB515A /* Debug */ = {
+		D8ED900F1C6A40D40091EE9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ResizableCollectionView/sample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ResizableCollectionView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hitting.ResizableCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		D8212C381C59081B00EB515A /* Release */ = {
+		D8ED90101C6A40D40091EE9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ResizableCollectionView/sample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ResizableCollectionView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hitting.ResizableCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -299,14 +270,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8212C361C59081B00EB515A /* Build configuration list for PBXNativeTarget "ResizableCollectionView" */ = {
+		D8ED900E1C6A40D40091EE9B /* Build configuration list for PBXNativeTarget "ResizableCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D8212C371C59081B00EB515A /* Debug */,
-				D8212C381C59081B00EB515A /* Release */,
+				D8ED900F1C6A40D40091EE9B /* Debug */,
+				D8ED90101C6A40D40091EE9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
