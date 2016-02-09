@@ -11,6 +11,10 @@ ResizableCollectionView is a library to change the number of columns by pinch in
 
 `pod 'ResizableCollectionView'`
 
+### Installation with Carthage
+
+Comming soon...
+
 ### Manual Installation
 
 1. Download source code.
@@ -34,7 +38,9 @@ iOS 8.0 or higher.
 
   ![Screen Shot](imgs/storyboard2.png)
 
-3. Implement ResizableCollectionViewDataSource.
+3. Set ResizableCollectionView's dataSource.
+
+4. Implement ResizableCollectionViewDataSource.
   (ResizableCollectionViewDataSource extends UICollectionViewDataSource of which implementation is required.)
 
   ```swift
@@ -83,7 +89,7 @@ ResizableCollectionView has four delegate methods.
 
 ## Example
 
-See the sample project `ResizableCollectionView.xcodeproj`.
+See the DEMO project `DEMO.xcodeproj`.
 
 
 ## Credits
