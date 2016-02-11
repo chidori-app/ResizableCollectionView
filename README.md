@@ -7,13 +7,13 @@ ResizableCollectionView is a library to change the number of columns by pinch in
 
 ## How To Get Started
 
+### Installation with Carthage
+
+`github "chidori-app/ResizableCollectionView"`
+
 ### Installation with CocoaPods
 
 `pod 'ResizableCollectionView'`
-
-### Installation with Carthage
-
-Comming soon...
 
 ### Manual Installation
 
@@ -34,9 +34,11 @@ iOS 8.0 or higher.
 
   ![Screen Shot](imgs/storyboard1.png)
 
-2. Set the class of the element to ResizableCollectionView instead of CollectionView.
+2. Set the class of the element to `ResizableCollectionView` instead of CollectionView.
 
   ![Screen Shot](imgs/storyboard2.png)
+
+  * If you install from Carthage, set the module of the element to `ResizableCollectionView`.
 
 3. Set ResizableCollectionView's dataSource.
 
