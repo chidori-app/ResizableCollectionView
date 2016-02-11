@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ResizableCollectionView"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "ResizableCollectionView is a library to change the number of columns by pinch in / out."
   s.description      = <<-DESC
                        ResizableCollectionView is a library to change the number of columns by pinch in / out.
@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
   s.social_media_url = "https://twitter.com/hitting1024"
   s.platform     = :ios, "8.0"
   s.requires_arc = true
-  s.source_files = "ResizableCollectionView/library/*.swift"
+  s.source_files = "ResizableCollectionView/*.swift"
 end
