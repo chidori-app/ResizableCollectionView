@@ -79,6 +79,8 @@ public extension ResizableCollectionViewDataSource {
 // MARK: - ResizableCollectionView
 public class ResizableCollectionView: UICollectionView {
     
+    public var numberOfCells = DefaultNumberOfCells.min
+    
     /// ResizableCollectionViewDelegate
     override weak public var delegate: UICollectionViewDelegate? {
         didSet {
@@ -104,7 +106,6 @@ public class ResizableCollectionView: UICollectionView {
     
     private var pinchGesture: UIPinchGestureRecognizer! = nil
     
-    private var numberOfCells = DefaultNumberOfCells.min
     private var zoomingStatus: ZoomStatus = .noZoom
     
     enum ZoomStatus {
