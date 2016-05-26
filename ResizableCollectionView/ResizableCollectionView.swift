@@ -234,7 +234,7 @@ public class ResizableCollectionView: UICollectionView {
     private func enableGesture() {
         if self.pinchGesture == nil {
             self.pinchGesture = UIPinchGestureRecognizer()
-            self.pinchGesture.addTarget(self, action: Selector("pinch:"))
+            self.pinchGesture.addTarget(self, action: #selector(ResizableCollectionView.pinch(_:)))
         }
         self.addGestureRecognizer(self.pinchGesture)
     }
