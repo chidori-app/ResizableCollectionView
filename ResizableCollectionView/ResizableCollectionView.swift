@@ -79,7 +79,20 @@ public extension ResizableCollectionViewDataSource {
 // MARK: - ResizableCollectionView
 public class ResizableCollectionView: UICollectionView {
     
-    public var numberOfCells = DefaultNumberOfCells.min
+    private var _numberOfCells = DefaultNumberOfCells.min
+    public var numberOfCells: Int {
+        get {
+            return self._numberOfCells
+        }
+        set {
+            let min = (self.myDataSource == nil) ? DefaultNumberOfCells.min : self.myDataSource!.minNumberOfCellsInLine(self)
+            let max = (self.myDataSource == nil) ? DefaultNumberOfCells.max : self.myDataSource!.maxNumberOfCellsInLine(self)
+            let value = (newValue < min) ? min : newValue
+            self._numberOfCells = (value > max) ? max : value
+            self.collectionViewLayout = self.collectionViewFlowLayout(self._numberOfCells)
+            self.reloadData()
+        }
+    }
     
     /// ResizableCollectionViewDelegate
     override weak public var delegate: UICollectionViewDelegate? {
@@ -97,8 +110,8 @@ public class ResizableCollectionView: UICollectionView {
             self.myDataSource = dataSource as? ResizableCollectionViewDataSource
             
             // update display
-            self.numberOfCells = self.myDataSource!.minNumberOfCellsInLine(self)
-            self.collectionViewLayout = self.collectionViewFlowLayout(self.numberOfCells)
+            self._numberOfCells = self.myDataSource!.minNumberOfCellsInLine(self)
+            self.collectionViewLayout = self.collectionViewFlowLayout(self._numberOfCells)
         }
     }
     private weak var myDataSource: ResizableCollectionViewDataSource?
@@ -125,7 +138,7 @@ public class ResizableCollectionView: UICollectionView {
     }
     
     private func _init() {
-        self.collectionViewLayout = self.collectionViewFlowLayout(self.numberOfCells)
+        self.collectionViewLayout = self.collectionViewFlowLayout(self._numberOfCells)
         self.enableGesture()
     }
     
@@ -135,10 +148,10 @@ public class ResizableCollectionView: UICollectionView {
             let min = (self.myDataSource == nil) ? DefaultNumberOfCells.min : self.myDataSource!.minNumberOfCellsInLine(self)
             let max = (self.myDataSource == nil) ? DefaultNumberOfCells.max : self.myDataSource!.maxNumberOfCellsInLine(self)
             
-            if gesture.scale > 1.0 && self.numberOfCells > min {
+            if gesture.scale > 1.0 && self._numberOfCells > min {
                 self.zoomingStatus = .zoomIn
                 self.myDelegate?.willPinchOut(self)
-            } else if self.numberOfCells < max {
+            } else if self._numberOfCells < max {
                 self.zoomingStatus = .zoomOut
                 self.myDelegate?.willPinchIn(self)
             }
@@ -180,7 +193,7 @@ public class ResizableCollectionView: UICollectionView {
             let threshold = (self.myDataSource == nil) ? defaultThresholdOfZoom : self.myDataSource!.thresholdOfZoom(self)
             if (self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress > threshold {
                 self.finishInteractiveTransition()
-                self.numberOfCells = self.nextNumberOfCells()
+                self._numberOfCells = self.nextNumberOfCells()
             } else {
                 self.cancelInteractiveTransition()
             }
@@ -208,11 +221,11 @@ public class ResizableCollectionView: UICollectionView {
     private func nextNumberOfCells() -> Int {
         switch (self.zoomingStatus) {
         case .zoomIn:
-            return self.numberOfCells - 1
+            return self._numberOfCells - 1
         case .zoomOut:
-            return self.numberOfCells + 1
+            return self._numberOfCells + 1
         default:
-            return self.numberOfCells
+            return self._numberOfCells
         }
     }
     
