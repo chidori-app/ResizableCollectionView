@@ -97,7 +97,7 @@ public class ResizableCollectionView: UICollectionView {
     /// ResizableCollectionViewDelegate
     override weak public var delegate: UICollectionViewDelegate? {
         didSet {
-            assert(delegate == nil || delegate is ResizableCollectionViewDelegate, "The delegate must be of type 'ResizableCollectionDelegate'")
+            assert(delegate == nil || delegate is ResizableCollectionViewDelegate, "The delegate must be of type 'ResizableCollectionViewDelegate'")
             self.myDelegate = delegate as? ResizableCollectionViewDelegate
         }
     }
