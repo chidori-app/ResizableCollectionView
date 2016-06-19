@@ -215,12 +215,21 @@ public class ResizableCollectionView: UICollectionView {
     
     private func collectionViewFlowLayout(numberOfCells: Int) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let margin = (self.myDataSource == nil) ? defaultMarginBetweenCells : self.myDataSource!.marginBetweenCells(self)
-        let cellWidth = (UIScreen.mainScreen().bounds.size.width - margin * (CGFloat(numberOfCells) + 1)) / CGFloat(numberOfCells)
+        let marginCells: CGFloat
+        let marginOutline: CGFloat
+        if self.myDataSource == nil {
+            marginCells = defaultMarginBetweenCells
+            marginOutline = defaultOutlineMargin
+        } else {
+            marginCells = self.myDataSource!.marginBetweenCells(self)
+            marginOutline = self.myDataSource!.outlineMargin(self)
+        }
+        let sumOfCellWidths = UIScreen.mainScreen().bounds.size.width - (2.0 * marginOutline + CGFloat(numberOfCells-1) * marginCells)
+        let cellWidth = sumOfCellWidths / CGFloat(numberOfCells)
         layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
-        layout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin)
-        layout.minimumInteritemSpacing = margin
-        layout.minimumLineSpacing = margin
+        layout.sectionInset = UIEdgeInsetsMake(marginOutline, marginOutline, marginOutline, marginOutline)
+        layout.minimumInteritemSpacing = marginCells
+        layout.minimumLineSpacing = marginCells
         return layout
     }
     

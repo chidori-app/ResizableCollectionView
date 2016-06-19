@@ -57,6 +57,10 @@ extension ViewController: ResizableCollectionViewDataSource {
     }
     
     func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat {
+        return CGFloat(10)
+    }
+    
+    func outlineMargin(collectionView: ResizableCollectionView) -> CGFloat {
         return CGFloat(5)
     }
     
