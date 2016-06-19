@@ -56,7 +56,7 @@ extension ViewController: ResizableCollectionViewDataSource {
         return 6
     }
     
-    func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat {
+    func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat {
         return CGFloat(5)
     }
     

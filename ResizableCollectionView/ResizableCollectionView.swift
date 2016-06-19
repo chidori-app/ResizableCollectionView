@@ -12,7 +12,8 @@ private struct DefaultNumberOfCells {
     static let min = 1
     static let max = 5
 }
-private let defaultMarginOfCells = CGFloat(2)
+private let defaultMarginBetweenCells = CGFloat(2)
+private let defaultOutlineMargin = CGFloat(2)
 private let defaultThresholdOfZoom = CGFloat(0.5)
 
 // MARK: - ResizableCollectionViewDelegate
@@ -51,7 +52,8 @@ public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
     func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
     func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
     
-    func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat
+    func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat
+    func outlineMargin(collectionView: ResizableCollectionView) -> CGFloat
     
     func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat
 }
@@ -66,8 +68,12 @@ public extension ResizableCollectionViewDataSource {
         return DefaultNumberOfCells.max
     }
     
-    func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat {
-        return defaultMarginOfCells
+    func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat {
+        return defaultMarginBetweenCells
+    }
+    
+    func outlineMargin(collectionView: ResizableCollectionView) -> CGFloat {
+        return defaultOutlineMargin
     }
     
     func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat {
@@ -209,7 +215,7 @@ public class ResizableCollectionView: UICollectionView {
     
     private func collectionViewFlowLayout(numberOfCells: Int) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let margin = (self.myDataSource == nil) ? defaultMarginOfCells : self.myDataSource!.marginOfCells(self)
+        let margin = (self.myDataSource == nil) ? defaultMarginBetweenCells : self.myDataSource!.marginBetweenCells(self)
         let cellWidth = (UIScreen.mainScreen().bounds.size.width - margin * (CGFloat(numberOfCells) + 1)) / CGFloat(numberOfCells)
         layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
         layout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin)
