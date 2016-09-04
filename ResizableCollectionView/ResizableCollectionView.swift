@@ -7,6 +7,26 @@
 //
 
 import UIKit
+//fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//  switch (lhs, rhs) {
+//  case let (l?, r?):
+//    return l < r
+//  case (nil, _?):
+//    return true
+//  default:
+//    return false
+//  }
+//}
+//
+//fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//  switch (lhs, rhs) {
+//  case let (l?, r?):
+//    return l > r
+//  default:
+//    return rhs < lhs
+//  }
+//}
+//
 
 private struct DefaultNumberOfCells {
     static let min = 1
@@ -19,28 +39,28 @@ private let defaultThresholdOfZoom = CGFloat(0.5)
 // MARK: - ResizableCollectionViewDelegate
 public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
     
-    func willPinchIn(collectionView: ResizableCollectionView)
-    func willPinchOut(collectionView: ResizableCollectionView)
+    func willPinchIn(_ collectionView: ResizableCollectionView)
+    func willPinchOut(_ collectionView: ResizableCollectionView)
     
-    func didPinchIn(collectionView: ResizableCollectionView)
-    func didPinchOut(collectionView: ResizableCollectionView)
+    func didPinchIn(_ collectionView: ResizableCollectionView)
+    func didPinchOut(_ collectionView: ResizableCollectionView)
     
 }
 
 // MARK: - ResizableCollectionViewDelegate - default implementation
 public extension ResizableCollectionViewDelegate {
     
-    func willPinchIn(collectionView: ResizableCollectionView) {
+    func willPinchIn(_ collectionView: ResizableCollectionView) {
         // nothing
     }
-    func willPinchOut(collectionView: ResizableCollectionView) {
+    func willPinchOut(_ collectionView: ResizableCollectionView) {
         // nothing
     }
     
-    func didPinchIn(collectionView: ResizableCollectionView) {
+    func didPinchIn(_ collectionView: ResizableCollectionView) {
         // nothing
     }
-    func didPinchOut(collectionView: ResizableCollectionView) {
+    func didPinchOut(_ collectionView: ResizableCollectionView) {
         // nothing
     }
     
@@ -49,44 +69,44 @@ public extension ResizableCollectionViewDelegate {
 // MARK: - ResizableCollectionViewDataSource
 public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
     
-    func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
-    func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int
+    func minNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int
+    func maxNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int
     
-    func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat
-    func outlineMargin(collectionView: ResizableCollectionView) -> CGFloat
+    func marginBetweenCells(_ collectionView: ResizableCollectionView) -> CGFloat
+    func outlineMargin(_ collectionView: ResizableCollectionView) -> CGFloat
     
-    func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat
+    func thresholdOfZoom(_ collectionView: ResizableCollectionView) -> CGFloat
 }
 
 // MARK: - ResizableCollectionViewDataSource - default implementation
 public extension ResizableCollectionViewDataSource {
-    func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
+    func minNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int {
         return DefaultNumberOfCells.min
     }
     
-    func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
+    func maxNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int {
         return DefaultNumberOfCells.max
     }
     
-    func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat {
+    func marginBetweenCells(_ collectionView: ResizableCollectionView) -> CGFloat {
         return defaultMarginBetweenCells
     }
     
-    func outlineMargin(collectionView: ResizableCollectionView) -> CGFloat {
+    func outlineMargin(_ collectionView: ResizableCollectionView) -> CGFloat {
         return defaultOutlineMargin
     }
     
-    func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat {
+    func thresholdOfZoom(_ collectionView: ResizableCollectionView) -> CGFloat {
         return defaultThresholdOfZoom
     }
     
 }
 
 // MARK: - ResizableCollectionView
-public class ResizableCollectionView: UICollectionView {
+open class ResizableCollectionView: UICollectionView {
     
-    private var _numberOfCells = DefaultNumberOfCells.min
-    public var numberOfCells: Int {
+    fileprivate var _numberOfCells = DefaultNumberOfCells.min
+    open var numberOfCells: Int {
         get {
             return self._numberOfCells
         }
@@ -101,16 +121,16 @@ public class ResizableCollectionView: UICollectionView {
     }
     
     /// ResizableCollectionViewDelegate
-    override weak public var delegate: UICollectionViewDelegate? {
+    override weak open var delegate: UICollectionViewDelegate? {
         didSet {
             assert(delegate == nil || delegate is ResizableCollectionViewDelegate, "The delegate must be of type 'ResizableCollectionViewDelegate'")
             self.myDelegate = delegate as? ResizableCollectionViewDelegate
         }
     }
-    private weak var myDelegate: ResizableCollectionViewDelegate?
+    fileprivate weak var myDelegate: ResizableCollectionViewDelegate?
     
     /// ResizableCollectionViewDataSource
-    override weak public var dataSource: UICollectionViewDataSource? {
+    override weak open var dataSource: UICollectionViewDataSource? {
         didSet {
             assert(delegate == nil || delegate is ResizableCollectionViewDataSource, "The dataSource must be of type 'ResizableCollectionViewDataSource'")
             self.myDataSource = dataSource as? ResizableCollectionViewDataSource
@@ -120,12 +140,12 @@ public class ResizableCollectionView: UICollectionView {
             self.collectionViewLayout = self.collectionViewFlowLayout(self._numberOfCells)
         }
     }
-    private weak var myDataSource: ResizableCollectionViewDataSource?
+    fileprivate weak var myDataSource: ResizableCollectionViewDataSource?
     
     
-    private var pinchGesture: UIPinchGestureRecognizer! = nil
+    fileprivate var pinchGesture: UIPinchGestureRecognizer! = nil
     
-    private var zoomingStatus: ZoomStatus = .noZoom
+    fileprivate var zoomingStatus: ZoomStatus = .noZoom
     
     enum ZoomStatus {
         case noZoom
@@ -143,14 +163,14 @@ public class ResizableCollectionView: UICollectionView {
         self._init()
     }
     
-    private func _init() {
+    fileprivate func _init() {
         self.collectionViewLayout = self.collectionViewFlowLayout(self._numberOfCells)
         self.enableGesture()
     }
     
-    func pinch(gesture: UIPinchGestureRecognizer) {
+    func pinch(_ gesture: UIPinchGestureRecognizer) {
         switch (gesture.state) {
-        case .Began:
+        case .began:
             let min = (self.myDataSource == nil) ? DefaultNumberOfCells.min : self.myDataSource!.minNumberOfCellsInLine(self)
             let max = (self.myDataSource == nil) ? DefaultNumberOfCells.max : self.myDataSource!.maxNumberOfCellsInLine(self)
             
@@ -167,7 +187,7 @@ public class ResizableCollectionView: UICollectionView {
             
             let nextCount = self.nextNumberOfCells()
             let nextLayout = self.collectionViewFlowLayout(nextCount)
-            self.startInteractiveTransitionToCollectionViewLayout(nextLayout, completion: {Void in
+            self.startInteractiveTransition(to: nextLayout, completion: {Void in
                 self.enableGesture()
                 
                 switch (self.zoomingStatus) {
@@ -185,19 +205,19 @@ public class ResizableCollectionView: UICollectionView {
                 self.zoomingStatus = .noZoom
             })
             break
-        case .Changed:
+        case .changed:
             if self.zoomingStatus == .noZoom {
                 return
             }
             (self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress = self.zoomProgressScale(gesture.scale)
             break
-        case .Ended:
+        case .ended:
             if self.zoomingStatus == .noZoom {
                 return
             }
             
             let threshold = (self.myDataSource == nil) ? defaultThresholdOfZoom : self.myDataSource!.thresholdOfZoom(self)
-            if (self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress > threshold {
+            if ((self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress)! > threshold {
                 self.finishInteractiveTransition()
                 self._numberOfCells = self.nextNumberOfCells()
             } else {
@@ -213,7 +233,7 @@ public class ResizableCollectionView: UICollectionView {
         }
     }
     
-    private func collectionViewFlowLayout(numberOfCells: Int) -> UICollectionViewFlowLayout {
+    fileprivate func collectionViewFlowLayout(_ numberOfCells: Int) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         let marginCells: CGFloat
         let marginOutline: CGFloat
@@ -224,7 +244,7 @@ public class ResizableCollectionView: UICollectionView {
             marginCells = self.myDataSource!.marginBetweenCells(self)
             marginOutline = self.myDataSource!.outlineMargin(self)
         }
-        let sumOfCellWidths = UIScreen.mainScreen().bounds.size.width - (2.0 * marginOutline + CGFloat(numberOfCells-1) * marginCells)
+        let sumOfCellWidths = UIScreen.main.bounds.size.width - (2.0 * marginOutline + CGFloat(numberOfCells-1) * marginCells)
         let cellWidth = sumOfCellWidths / CGFloat(numberOfCells)
         layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
         layout.sectionInset = UIEdgeInsetsMake(marginOutline, marginOutline, marginOutline, marginOutline)
@@ -233,7 +253,7 @@ public class ResizableCollectionView: UICollectionView {
         return layout
     }
     
-    private func nextNumberOfCells() -> Int {
+    fileprivate func nextNumberOfCells() -> Int {
         switch (self.zoomingStatus) {
         case .zoomIn:
             return self._numberOfCells - 1
@@ -244,7 +264,7 @@ public class ResizableCollectionView: UICollectionView {
         }
     }
     
-    private func zoomProgressScale(zoomScale: CGFloat) -> CGFloat {
+    fileprivate func zoomProgressScale(_ zoomScale: CGFloat) -> CGFloat {
         var scale: CGFloat = 0.0
         switch (self.zoomingStatus) {
         case .zoomIn:
@@ -259,7 +279,7 @@ public class ResizableCollectionView: UICollectionView {
         return scale
     }
     
-    private func enableGesture() {
+    fileprivate func enableGesture() {
         if self.pinchGesture == nil {
             self.pinchGesture = UIPinchGestureRecognizer()
             self.pinchGesture.addTarget(self, action: #selector(ResizableCollectionView.pinch(_:)))
@@ -267,7 +287,7 @@ public class ResizableCollectionView: UICollectionView {
         self.addGestureRecognizer(self.pinchGesture)
     }
     
-    private func disableGesture() {
+    fileprivate func disableGesture() {
         self.removeGestureRecognizer(self.pinchGesture)
     }
     

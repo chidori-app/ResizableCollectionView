@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private static let colors = [UIColor.redColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor(), UIColor.whiteColor()]
+    fileprivate static let colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.white]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,36 +47,37 @@ extension ViewController: ResizableCollectionViewDelegate {
 
 //MARK: - ResizableCollectionViewDataSource
 extension ViewController: ResizableCollectionViewDataSource {
-    
-    func minNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
+    func minNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int {
         return 2
     }
     
-    func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
+
+    func maxNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int {
         return 6
     }
     
-    func marginBetweenCells(collectionView: ResizableCollectionView) -> CGFloat {
+    func marginBetweenCells(_ collectionView: ResizableCollectionView) -> CGFloat {
         return CGFloat(10)
     }
     
-    func outlineMargin(collectionView: ResizableCollectionView) -> CGFloat {
+    func outlineMargin(_ collectionView: ResizableCollectionView) -> CGFloat {
         return CGFloat(5)
     }
     
-    func thresholdOfZoom(collectionView: ResizableCollectionView) -> CGFloat {
+    func thresholdOfZoom(_ collectionView: ResizableCollectionView) -> CGFloat {
         return CGFloat(0.6)
     }
     
     // MARK: - UICollectionViewDataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100
     }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath)
         cell.backgroundColor = ViewController.colors[indexPath.row % ViewController.colors.count]
         return cell
     }
