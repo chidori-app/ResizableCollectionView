@@ -7,34 +7,14 @@
 //
 
 import UIKit
-//fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-//  switch (lhs, rhs) {
-//  case let (l?, r?):
-//    return l < r
-//  case (nil, _?):
-//    return true
-//  default:
-//    return false
-//  }
-//}
-//
-//fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-//  switch (lhs, rhs) {
-//  case let (l?, r?):
-//    return l > r
-//  default:
-//    return rhs < lhs
-//  }
-//}
-//
 
-private struct DefaultNumberOfCells {
+fileprivate struct DefaultNumberOfCells {
     static let min = 1
     static let max = 5
 }
-private let defaultMarginBetweenCells = CGFloat(2)
-private let defaultOutlineMargin = CGFloat(2)
-private let defaultThresholdOfZoom = CGFloat(0.5)
+fileprivate let defaultMarginBetweenCells = CGFloat(2)
+fileprivate let defaultOutlineMargin = CGFloat(2)
+fileprivate let defaultThresholdOfZoom = CGFloat(0.5)
 
 // MARK: - ResizableCollectionViewDelegate
 public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
