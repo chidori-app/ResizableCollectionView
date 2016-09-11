@@ -4,6 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = "ResizableCollectionView is a library to change the number of columns by pinch in / out."
   s.description      = <<-DESC
                        ResizableCollectionView is a library to change the number of columns by pinch in / out.
+                       It has 4 delegate methods (willPinchIn / willPinchOut / didPinchIn / didPinchOut.)
                        DESC
   s.homepage         = "https://github.com/chidori-app/ResizableCollectionView"
   s.license          = 'MIT'
