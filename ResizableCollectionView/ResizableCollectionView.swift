@@ -8,13 +8,13 @@
 
 import UIKit
 
-private struct DefaultNumberOfCells {
+fileprivate struct DefaultNumberOfCells {
     static let min = 1
     static let max = 5
 }
-private let defaultMarginBetweenCells = CGFloat(2)
-private let defaultOutlineMargin = CGFloat(2)
-private let defaultThresholdOfZoom = CGFloat(0.5)
+fileprivate let defaultMarginBetweenCells = CGFloat(2)
+fileprivate let defaultOutlineMargin = CGFloat(2)
+fileprivate let defaultThresholdOfZoom = CGFloat(0.5)
 
 // MARK: - ResizableCollectionViewDelegate
 public protocol ResizableCollectionViewDelegate : UICollectionViewDelegate {
