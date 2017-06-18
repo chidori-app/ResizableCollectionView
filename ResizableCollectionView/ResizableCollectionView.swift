@@ -94,7 +94,7 @@ public extension ResizableCollectionViewDataSource {
 open class ResizableCollectionView: UICollectionView {
     
     fileprivate var _numberOfCells = DefaultNumberOfCells.min
-    open var numberOfCells: Int {
+    open var numberOfCellsInLine: Int {
         get {
             return self._numberOfCells
         }
