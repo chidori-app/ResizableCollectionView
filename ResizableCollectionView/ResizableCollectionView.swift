@@ -12,6 +12,7 @@ fileprivate struct DefaultNumberOfCells {
     static let min = 1
     static let max = 5
 }
+fileprivate let defaultCellHeight = CGFloat(-1)
 fileprivate let defaultMarginBetweenCells = CGFloat(2)
 fileprivate let defaultOutlineMargin = CGFloat(2)
 fileprivate let defaultThresholdOfZoom = CGFloat(0.5)
@@ -52,6 +53,9 @@ public protocol ResizableCollectionViewDataSource : UICollectionViewDataSource {
     func minNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int
     func maxNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int
     
+    /// if less than equal 0 then set cell height to cell width
+    func cellHeight(_ collectionView: ResizableCollectionView) -> CGFloat
+    
     func marginBetweenCells(_ collectionView: ResizableCollectionView) -> CGFloat
     func outlineMargin(_ collectionView: ResizableCollectionView) -> CGFloat
     
@@ -66,6 +70,10 @@ public extension ResizableCollectionViewDataSource {
     
     func maxNumberOfCellsInLine(_ collectionView: ResizableCollectionView) -> Int {
         return DefaultNumberOfCells.max
+    }
+    
+    func cellHeight(_ collectionView: ResizableCollectionView) -> CGFloat {
+        return defaultCellHeight
     }
     
     func marginBetweenCells(_ collectionView: ResizableCollectionView) -> CGFloat {
@@ -226,14 +234,19 @@ open class ResizableCollectionView: UICollectionView {
         }
         let sumOfCellWidths = UIScreen.main.bounds.size.width - (2.0 * marginOutline + CGFloat(numberOfCells-1) * marginCells)
         let cellWidth = sumOfCellWidths / CGFloat(numberOfCells)
-        layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
+        if self.myDataSource == nil {
+            layout.itemSize = CGSize(width: cellWidth , height: cellWidth)
+        } else {
+            let h = self.myDataSource!.cellHeight(self)
+            layout.itemSize = CGSize(width: cellWidth , height: h > 0 ? h : cellWidth)
+        }
         layout.sectionInset = UIEdgeInsetsMake(marginOutline, marginOutline, marginOutline, marginOutline)
         layout.minimumInteritemSpacing = marginCells
         layout.minimumLineSpacing = marginCells
         return layout
     }
     
-    fileprivate func nextNumberOfCells() -> Int {
+    open func nextNumberOfCells() -> Int {
         switch (self.zoomingStatus) {
         case .zoomIn:
             return self._numberOfCells - 1
