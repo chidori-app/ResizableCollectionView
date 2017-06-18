@@ -173,7 +173,7 @@ open class ResizableCollectionView: UICollectionView {
                 return
             }
             
-            let nextCount = self.nextNumberOfCells()
+            let nextCount = self.nextNumberOfCellsInLine()
             let nextLayout = self.collectionViewFlowLayout(nextCount)
             self.startInteractiveTransition(to: nextLayout, completion: {Void in
                 self.enableGesture()
@@ -207,7 +207,7 @@ open class ResizableCollectionView: UICollectionView {
             let threshold = (self.myDataSource == nil) ? defaultThresholdOfZoom : self.myDataSource!.thresholdOfZoom(self)
             if ((self.collectionViewLayout as? UICollectionViewTransitionLayout)?.transitionProgress)! > threshold {
                 self.finishInteractiveTransition()
-                self._numberOfCells = self.nextNumberOfCells()
+                self._numberOfCells = self.nextNumberOfCellsInLine()
             } else {
                 self.cancelInteractiveTransition()
             }
@@ -246,7 +246,7 @@ open class ResizableCollectionView: UICollectionView {
         return layout
     }
     
-    open func nextNumberOfCells() -> Int {
+    open func nextNumberOfCellsInLine() -> Int {
         switch (self.zoomingStatus) {
         case .zoomIn:
             return self._numberOfCells - 1
