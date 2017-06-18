@@ -57,7 +57,7 @@ extension ViewController: ResizableCollectionViewDataSource {
     }
     
     func cellHeight(_ collectionView: ResizableCollectionView) -> CGFloat {
-        return CGFloat(collectionView.nextNumberOfCells() * 50)
+        return CGFloat(collectionView.nextNumberOfCellsInLine() * 50)
     }
     
     func marginBetweenCells(_ collectionView: ResizableCollectionView) -> CGFloat {
