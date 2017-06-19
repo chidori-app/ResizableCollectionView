@@ -56,6 +56,9 @@ iOS 8.0 or higher.
       func maxNumberOfCellsInLine(collectionView: ResizableCollectionView) -> Int {
           return 6
       }
+      func cellHeight(_ collectionView: ResizableCollectionView) -> CGFloat {
+        return CGFloat(50)
+      }
       // optional
       func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat {
           return CGFloat(5)
