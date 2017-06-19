@@ -57,7 +57,7 @@ iOS 8.0 or higher.
           return 6
       }
       func cellHeight(_ collectionView: ResizableCollectionView) -> CGFloat {
-        return CGFloat(50)
+          return CGFloat(50)
       }
       // optional
       func marginOfCells(collectionView: ResizableCollectionView) -> CGFloat {
