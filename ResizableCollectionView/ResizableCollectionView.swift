@@ -156,7 +156,7 @@ open class ResizableCollectionView: UICollectionView {
         self.enableGesture()
     }
     
-    func pinch(_ gesture: UIPinchGestureRecognizer) {
+    @objc func pinch(_ gesture: UIPinchGestureRecognizer) {
         switch (gesture.state) {
         case .began:
             let min = (self.myDataSource == nil) ? DefaultNumberOfCells.min : self.myDataSource!.minNumberOfCellsInLine(self)
@@ -175,7 +175,7 @@ open class ResizableCollectionView: UICollectionView {
             
             let nextCount = self.nextNumberOfCellsInLine()
             let nextLayout = self.collectionViewFlowLayout(nextCount)
-            self.startInteractiveTransition(to: nextLayout, completion: {Void in
+            self.startInteractiveTransition(to: nextLayout, completion: { (_, _) in
                 self.enableGesture()
                 
                 switch (self.zoomingStatus) {
